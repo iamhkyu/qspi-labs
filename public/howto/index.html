@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- variable meta start -->
+  <title>큐스피 코인 (QSPI) - 큐스피 코인 앱 사용방법</title>
+
+  <meta name="description" content="큐스피 코인 앱의 주요 기능 사용 설명입니다. 유튜브 동영상으로 더욱 쉽게 이해할 수 있습니다." />
+  <meta name="keywords" content="큐스피, QSPI, 코인, 앱, 사용방법, 업데이트, 공지, 유튜브" />
+  <meta name="author" content="QSPI" />
+
+  <link rel="canonical" href="https://qspilab.com/howto" />
+  <link rel="alternate" hreflang="ko" href="https://qspilab.com/howto" />
+  <link rel="alternate" hreflang="en" href="https://qspilab.com/en/howto" />
+  <link rel="alternate" hreflang="x-default" href="https://qspilab.com/en/howto" />
+
+  <meta property="og:title" content="큐스피 코인 (QSPI) - 큐스피 코인 앱 사용방법" />
+  <meta property="og:description" content="큐스피 코인 앱의 주요 기능 사용 설명입니다. 유튜브 동영상으로 더욱 쉽게 이해할 수 있습니다." />
+  <meta property="og:url" content="https://qspilab.com/howto" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WepPage",
+  "name": "큐스피 코인 (QSPI) - 큐스피 코인 앱 사용방법",
+  "url": "https://qspilab.com/howto",
+  "logo": "https://qspilab.com/favicon/apple-touch-icon.png"
+  }
+  </script>
+  <!-- variable meta end -->
+
+  <link rel="icon" type="image/png" href="https://qspilab.com/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://qspilab.com/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://qspilab.com/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://qspilab.com/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="https://qspilab.com/favicon/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    .header {
+      background: url('background.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 30px 0px 40px;
+      position: relative;
+    }
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .header h1 {
+      font-size: 2.0rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .header p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #bbbbbb;
+      line-height: 1.8;
+    }
+    .main-content {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+    .content-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .content-link:hover {
+      transform: translateY(-2px);
+    }
+    .content-item {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: nowrap;
+    }
+    .content-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .content-text h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #222;
+    }
+    .content-text p {
+      font-size: 1rem;
+      color: #666;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .content-thumb {
+      flex: 0 0 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .content-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: none;
+      filter: none;
+    }
+    @media (max-width: 680px) {
+      .content-item {
+        gap: 20px;
+      }
+      .content-thumb {
+        flex: 0 0 180px;
+      }
+      .content-text h2 { font-size: 1.2rem; }
+      .content-text p { font-size: 0.95rem; }
+    }
+    @media (max-width: 480px) {
+      .content-item {
+        flex-wrap: nowrap;
+      }
+      .content-thumb {
+        flex: 0 0 120px;
+      }
+      .content-text h2 { font-size: 1.1rem; }
+      .content-text p { font-size: 0.9rem; }
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 40px 20px 30px;
+      background: #fff;
+    }
+    footer a {
+      color: #666;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>큐스피 코인 앱 사용방법</h1>
+      <p>큐스피 코인 앱의 주요 기능 사용 설명입니다.<br>유튜브 동영상으로 더욱 쉽게 이해할 수 있습니다.</p>
+    </div>
+  </header>
+  <main class="main-content">
+    <a href="https://qspilab.com/howto/howto1" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>특정 기간 동안 가장 많이 오른 코인 알아내는 방법</h2>
+          <p>단기간 급등한 종목을 빠르게 포착하고, 시간 단위별 상승률과 변동률을 확인할 수 있으며, 고급 설정을 통해 나만의 조건으로 시장 흐름을 세밀하게 탐색할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail1.png" alt="특정 기간 동안 가장 많이 오른 코인 알아내는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto2" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>특정 기간 동안 가장 많이 떨어진 코인 알아내는 방법</h2>
+          <p>단기간 하락한 종목을 빠르게 확인하고, 시간 단위별 하락률과 변동률을 체크할 수 있으며, 고급 설정을 통해 나만의 조건으로 세밀하게 탐색하고 정렬할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail2.png" alt="특정 기간 동안 가장 많이 떨어진 코인 알아내는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto3" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>기간별로 누적 거래대금 알아내는 방법</h2>
+          <p>거래대금 상위 종목을 확인하고, 시간 단위별 누적 거래대금을 살펴볼 수 있으며, 고급 설정을 통해 나만의 기간 기준으로 세밀하게 탐색하고 정렬할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail3.png" alt="기간별로 누적 거래대금 알아내는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto4" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>기간별 거래량 급상승 코인 알아내기</h2>
+          <p>거래량 급등 종목을 시간 단위별로 확인하고, 고급 설정을 통해 나만의 기간 기준으로 세밀하게 탐색하며, 체크 아이콘으로 설정을 완료하면 최근 거래량 증가 순서대로 코인을 확인할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail4.png" alt="기간별 거래량 급상승 코인 알아내기"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto5" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>특정 기간 연속 상승한 코인 알아내는 방법</h2>
+          <p>연속상승 종목을 일, 시간, 분 단위로 확인하고, 고급 설정에서 세부 단위를 조정한 뒤 체크 아이콘으로 완료하면 분단위 연속상승 기록 순서대로 코인을 확인할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail5.png" alt="특정 기간 연속 상승한 코인 알아내는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto6" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>주의 지정된 코인들 한눈에 보는 방법</h2>
+          <p>주의지정 탭을 통해 지정된 코인과 관련 내용을 확인하고, 더보기로 탐색 탭에서 세밀한 설정을 적용할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail6.png" alt="주의 지정된 코인들 한눈에 보는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto7" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>코인 별로 김치 프리미엄 확인하는 방법</h2>
+          <p>글로벌 시세와 가격 차이를 확인하고, 더보기로 탐색 탭에서 세밀한 설정을 적용하며, 가격 차이에 따라 오름차순 또는 내림차순으로 정렬해 볼 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail7.png" alt="코인 별로 김치 프리미엄 확인하는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto8" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>하락을 지나 급반등하는 코인 찾아내는 방법</h2>
+          <p>타임랩스 구간에서 원하는 시간대를 선택해 퍼센트 변화를 확인하고, 더보기로 탐색 탭에서 세부 조건을 설정하며, 고급 설정에서 기간과 조건을 조정해 자유롭게 항목을 정렬할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail8.png" alt="하락을 지나 급반등하는 코인 찾아내는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto9" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>특정 기간 동안 특정 급등한 코인들 알림 받는 방법</h2>
+          <p>우측 상단 알림 아이콘을 눌러 상승·하락 포착을 선택하고 알림을 켠 뒤, 원하는 상승률과 기간, 거래소를 설정하면 앱이 꺼져 있어도 조건에 맞는 코인을 자동으로 알림 받을 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail9.png" alt="특정 기간 동안 특정 급등한 코인들 알림 받는 방법"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/howto/howto10" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>클릭 한번으로 전략 세팅을 바로 적용하는 방법</h2>
+          <p>탐색 탭에서 상단 프리셋 버튼을 눌러 저장된 전략 세팅을 바로 적용하면 상승·급등 종목과 30일·7일·1일 변화 추세, 연속상승과 이동평균선 상태, 과매수 여부까지 한눈에 확인할 수 있으며, 편집 버튼으로 모든 설정을 나만의 방식으로 자유롭게 조정할 수 있습니다.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail10.png" alt="클릭 한번으로 전략 세팅을 바로 적용하는 방법"></div>
+      </div>
+    </a>
+
+  </main>
+  <footer>
+    Copyright © 2025 QSPI Co. All rights reserved.<br>
+    <div class="footer-links">
+      <a href="https://qspilab.com">홈페이지</a> |
+      <a href="https://qspilab.com/terms-and-conditions-ios-ko.html">이용약관</a> |
+      <a href="https://qspilab.com/privacy-policy-ios-ko.html">개인정보 처리방침</a>
+    </div>
+  </footer>
+</body>
+</html>

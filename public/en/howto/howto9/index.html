@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- variable meta start -->
+  <title>QSPI Coin - How to Get Alerts for Surging Coins Over a Given Period</title>
+
+  <meta name="description" content="Set up upward and downward alerts, configure percentage and time settings, and receive notifications even when the app is closed." />
+  <meta name="keywords" content="coin alerts, detect up, detect down, notification settings, percentage increase, time period, exchanges, push notifications" />
+  <meta name="author" content="QSPI" />
+
+  <link rel="canonical" href="https://qspilab.com/en/howto/howto9" />
+  <link rel="alternate" hreflang="ko" href="https://qspilab.com/howto/howto9" />
+  <link rel="alternate" hreflang="en" href="https://qspilab.com/en/howto/howto9" />
+  <link rel="alternate" hreflang="x-default" href="https://qspilab.com/en/howto/howto9" />
+
+  <meta property="og:title" content="QSPI Coin - How to Get Alerts for Surging Coins Over a Given Period" />
+  <meta property="og:description" content="Set up upward and downward alerts, configure percentage and time settings, and receive notifications even when the app is closed." />
+  <meta property="og:url" content="https://qspilab.com/en/howto/howto9" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WepPage",
+    "name": "QSPI Coin - How to Get Alerts for Surging Coins Over a Given Period",
+    "url": "https://qspilab.com/en/howto/howto9",
+    "logo": "https://qspilab.com/favicon/apple-touch-icon.png"
+  }
+  </script>
+  <!-- variable meta end -->
+
+  <link rel="icon" type="image/png" href="https://qspilab.com/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://qspilab.com/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://qspilab.com/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://qspilab.com/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="https://qspilab.com/favicon/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #fff;
+      color: #000;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header-container {
+      width: 100%;
+      padding: 40px 0;
+    }
+
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .back-link {
+      font-size: 1.2rem;
+      color: #643cc8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    .main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .content-section {
+      padding: 10px 0;
+    }
+
+    .howto-text p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #666;
+      word-break: keep-all;
+    }
+
+    .howto-text img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 10px 0 40px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 40px 0;
+      width: 100%;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    footer {
+      width: 100%;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer a {
+      color: #666;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 30px 0;
+      }
+
+      .header-inner,
+      .main-content {
+        padding: 0 15px;
+      }
+
+      .header-title {
+        font-size: 1.4rem;
+      }
+
+      .content-section {
+        padding: 20px 0;
+      }
+
+      .howto-text p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .howto-text img {
+        margin-bottom: 30px;
+      }
+
+      .video-wrapper {
+        margin: 30px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <div class="header-inner">
+      <a href="https://qspilab.com/en/howto" class="back-link">← How to Use the QSPI Coin App</a>
+      <h1 class="header-title">How to Get Alerts for Surging Coins Over a Given Period</h1>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="content-section">
+      <div class="howto-text">
+        <p>Tap the notification icon at the top right.</p>
+        <img src="9.png" alt="Tapping the notification icon at the top right of the app">
+
+        <p>For upward alerts, tap Surge Alert.</p>
+        <img src="10.png" alt="For upward alerts, tap Surge Alert">
+
+        <p>For downward alerts, tap Plunge Alert.</p>
+        <img src="11.png" alt="For downward alerts, tap Plunge Alert">
+
+        <p>Turn on the notifications.</p>
+        <img src="12.png" alt="Turning on the notification switch to enable alerts">
+
+        <p>Set your desired percentage increase freely.</p>
+        <img src="13.png" alt="User setting the desired percentage increase">
+
+        <p>Set your preferred time period freely.</p>
+        <img src="14.png" alt="User setting the notification period freely">
+
+        <p>Select the exchanges you want to track.</p>
+        <img src="15.png" alt="Choosing exchanges for notifications">
+
+        <p>From now on, you will receive alerts for coins that meet your conditions even if the app is closed.</p>
+        <img src="16.png" alt="Receiving alerts for coins that meet conditions even when the app is closed">
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/shCpj59bvKY"
+            title="How to Get Alerts for Surging Coins Over a Given Period"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Copyright © 2025 QSPI Co. All rights reserved.<br>
+    <a href="https://qspilab.com/en">Home</a> |
+    <a href="https://qspilab.com/terms-and-conditions-ios-en.html">Terms of Use</a> |
+    <a href="https://qspilab.com/privacy-policy-ios-en.html">Privacy Policy</a>
+  </footer>
+</body>
+</html>

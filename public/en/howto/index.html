@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- variable meta start -->
+  <title>QSPI Coin (QSPI) - How to Use the QSPI Coin App</title>
+
+  <meta name="description" content="Instructions on how to use the main features of the QSPI Coin app. Easily understood with YouTube videos." />
+  <meta name="keywords" content="QSPI, Coin, App, How to Use, Update, Notice, YouTube" />
+  <meta name="author" content="QSPI" />
+
+  <link rel="canonical" href="https://qspilab.com/en/howto" />
+  <link rel="alternate" hreflang="ko" href="https://qspilab.com/howto" />
+  <link rel="alternate" hreflang="en" href="https://qspilab.com/en/howto" />
+  <link rel="alternate" hreflang="x-default" href="https://qspilab.com/en/howto" />
+
+  <meta property="og:title" content="QSPI Coin (QSPI) - How to Use the QSPI Coin App" />
+  <meta property="og:description" content="Instructions on how to use the main features of the QSPI Coin app. Easily understood with YouTube videos." />
+  <meta property="og:url" content="https://qspilab.com/en/howto" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "QSPI Coin (QSPI) - How to Use the QSPI Coin App",
+    "url": "https://qspilab.com/en/howto",
+    "logo": "https://qspilab.com/favicon/apple-touch-icon.png"
+  }
+  </script>
+  <!-- variable meta end -->
+
+  <link rel="icon" type="image/png" href="https://qspilab.com/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://qspilab.com/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://qspilab.com/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://qspilab.com/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="https://qspilab.com/favicon/site.webmanifest" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    .header {
+      background: url('background.png') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 30px 0px 40px;
+      position: relative;
+    }
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .header h1 {
+      font-size: 2.0rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .header p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #bbbbbb;
+      line-height: 1.8;
+    }
+    .main-content {
+      max-width: 950px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+    .content-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s ease;
+    }
+    .content-link:hover {
+      transform: translateY(-2px);
+    }
+    .content-item {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: nowrap;
+    }
+    .content-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    .content-text h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #222;
+    }
+    .content-text p {
+      font-size: 1rem;
+      color: #666;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .content-thumb {
+      flex: 0 0 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .content-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: none;
+      filter: none;
+    }
+    @media (max-width: 680px) {
+      .content-item {
+        gap: 20px;
+      }
+      .content-thumb {
+        flex: 0 0 180px;
+      }
+      .content-text h2 { font-size: 1.2rem; }
+      .content-text p { font-size: 0.95rem; }
+    }
+    @media (max-width: 480px) {
+      .content-item {
+        flex-wrap: nowrap;
+      }
+      .content-thumb {
+        flex: 0 0 120px;
+      }
+      .content-text h2 { font-size: 1.1rem; }
+      .content-text p { font-size: 0.9rem; }
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 40px 20px 30px;
+      background: #fff;
+    }
+    footer a {
+      color: #666;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    footer a:hover { text-decoration: underline; }
+    .footer-links { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>How to Use the QSPI Coin App</h1>
+      <p>Instructions on how to use the main features of the QSPI Coin app.<br>Easily understood with YouTube videos.</p>
+    </div>
+  </header>
+  <main class="main-content">
+    <a href="https://qspilab.com/en/howto/howto1" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Find Top-Performing Coins Over a Given Period</h2>
+          <p>Quickly spot coins that surged in a short period, check hourly rise rates and volatility, and use advanced settings to explore market trends according to your own criteria.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail1.png" alt="How to Find the Coins That Rose the Most in a Specific Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto2" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Find Worst-Performing Coins Over a Given Period</h2>
+          <p>Quickly check coins that dropped in a short period, monitor hourly fall rates and volatility, and use advanced settings to explore and sort according to your own criteria.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail2.png" alt="How to Find the Coins That Fell the Most in a Specific Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto3" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Check Cumulative Trading Volume by Period</h2>
+          <p>View top trading volume coins, examine cumulative trading volume hourly, and use advanced settings to explore and sort according to your preferred time periods.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail3.png" alt="How to Check Cumulative Trading Volume by Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto4" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Spot Coins with Surging Volume During a Period</h2>
+          <p>Check coins with sudden volume spikes hourly, explore using your own period settings, and confirm results in order of recent volume increase using the check icon.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail4.png" alt="How to Find Coins with Sudden Volume Surges by Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto5" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Find Consecutive Gainers Over a Given Period</h2>
+          <p>Check consecutive rising coins by day, hour, or minute. Adjust detailed units in advanced settings and confirm results in order of minute-by-minute consecutive gains using the check icon.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail5.png" alt="How to Find Coins with Consecutive Gains in a Specific Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto6" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to View Caution-Listed Coins at a Glance</h2>
+          <p>Check coins and related info in the Watchlist tab and apply detailed settings in the Explore tab under 'More'.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail6.png" alt="How to View All Watchlist Coins at a Glance"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto7" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Check the Global Price Difference by Coin</h2>
+          <p>Compare global prices and differences, apply detailed settings in the Explore tab under 'More', and sort coins in ascending or descending order according to price differences.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail7.png" alt="How to Check Kimchi Premium by Coin"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto8" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Find Rebounding Coins After a Drop</h2>
+          <p>Select your desired time period in the timelapse section, check percentage changes, set detailed conditions in the Explore tab, and freely sort items using advanced period and condition settings.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail8.png" alt="How to Find Coins That Rebound Sharply After a Drop"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto9" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Get Alerts for Surging Coins Over a Given Period</h2>
+          <p>Tap the top-right alert icon to select rise/fall alerts, turn notifications on, set the desired increase rate, period, and exchange, and receive automatic alerts even when the app is closed.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail9.png" alt="How to Receive Alerts for Specific Coins That Surge in a Period"></div>
+      </div>
+    </a>
+
+    <a href="https://qspilab.com/en/howto/howto10" class="content-link">
+      <div class="content-item">
+        <div class="content-text">
+          <h2>How to Apply Saved Strategies with One Click</h2>
+          <p>Press the top preset button in the Explore tab to instantly apply saved strategy settings, view rising coins, trends over 30/7/1 days, consecutive rises, moving averages, and overbought status, and freely adjust all settings using the edit button.</p>
+        </div>
+        <div class="content-thumb"><img src="thumbnail10.png" alt="How to Apply Strategy Settings Instantly with One Click"></div>
+      </div>
+    </a>
+
+  </main>
+  <footer>
+    Copyright © 2025 QSPI Co. All rights reserved.<br>
+    <div class="footer-links">
+      <a href="https://qspilab.com/en">Home</a> |
+      <a href="https://qspilab.com/terms-and-conditions-ios-en.html">Terms of Use</a> |
+      <a href="https://qspilab.com/privacy-policy-ios-en.html">Privacy Policy</a>
+    </div>
+  </footer>
+</body>
+</html>
