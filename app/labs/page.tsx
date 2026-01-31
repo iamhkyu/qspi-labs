@@ -17,6 +17,7 @@ import {
   Sprout,
 } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useLabsScore } from "@/lib/useLabsScore";
 
 type Mode = "fast" | "normal" | "stable";
 type RoadStatus = "고속도로" | "국도" | "공사중";
@@ -160,6 +161,30 @@ const SECTORS: Sector[] = [
   },
 ];
 
+/** Firestore score(숫자)를 반도체 섹터에 반영 */
+function applyLabsScoreToSectors(
+  sectors: Sector[],
+  score: number | null
+): Sector[] {
+  if (score == null) return sectors;
+
+  const semi = sectors.find((s) => s.id === "semiconductor");
+  if (!semi) return sectors;
+
+  const clone = [...sectors];
+  const idx = clone.findIndex((s) => s.id === "semiconductor");
+  if (idx < 0) return sectors;
+
+  const scores: Scores = { s4: score, s14: score, s54: score };
+  const byMode = {
+    fast: { status: "고속도로" as RoadStatus, scores },
+    normal: { status: "고속도로" as RoadStatus, scores },
+    stable: { status: "고속도로" as RoadStatus, scores },
+  };
+  clone[idx] = { ...semi, byMode };
+  return clone;
+}
+
 function ScoreRow({
   label,
   value,
@@ -197,17 +222,23 @@ function ScoreRow({
 
 export default function LabsMarketRoadmapPage() {
   const [mode, setMode] = useState<Mode>("normal");
+  const { score: labsScore, loading: labsLoading, error: labsError } = useLabsScore();
+
+  const sectors = useMemo(
+    () => applyLabsScoreToSectors(SECTORS, labsScore),
+    [labsScore]
+  );
 
   const ordered = useMemo(() => {
     const statusRank: Record<RoadStatus, number> = { 고속도로: 3, 국도: 2, 공사중: 1 };
-    return [...SECTORS].sort((a, b) => {
+    return [...sectors].sort((a, b) => {
       const A = a.byMode[mode];
       const B = b.byMode[mode];
       const r1 = statusRank[B.status] - statusRank[A.status];
       if (r1 !== 0) return r1;
       return weightedMomentum(B.scores) - weightedMomentum(A.scores);
     });
-  }, [mode]);
+  }, [mode, sectors]);
 
   return (
     <div className="min-h-dvh bg-slate-950 text-slate-100">
@@ -287,15 +318,20 @@ export default function LabsMarketRoadmapPage() {
                     transition={{ type: "spring", stiffness: 320, damping: 28 }}
                     className="group relative overflow-hidden rounded-2xl bg-white/5 p-5 ring-1 ring-white/10 backdrop-blur"
                   >
-                    <div className="relative flex items-start justify-between gap-4">
+                      <div className="relative flex items-start justify-between gap-4">
                       <div className="min-w-0">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/20 ring-1 ring-white/10">
                             <Icon className="h-5 w-5 text-slate-100" />
                           </span>
                           <h2 className="truncate text-base font-semibold tracking-tight text-slate-50">
                             {sector.name}
                           </h2>
+                          {sector.id === "semiconductor" && labsScore != null && (
+                            <span className="inline-flex items-center rounded-md bg-emerald-500/20 px-2 py-0.5 text-[10px] font-medium text-emerald-300 ring-1 ring-emerald-400/30">
+                              실시간
+                            </span>
+                          )}
                         </div>
 
                         <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-black/20 px-2.5 py-1 text-xs text-slate-200 ring-1 ring-white/10">

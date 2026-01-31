@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Firebase (Labs 페이지)
+
+`/labs`에서 Firestore 반도체 MOMENTUM 점수를 표시합니다. 배포 시 Vercel 환경 변수에 `.env.example` 참고하여 Firebase 설정을 추가하세요.
