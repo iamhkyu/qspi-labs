@@ -5,8 +5,7 @@ import {
   Bitcoin,
   CircleEllipsis,
   Cpu,
-  CloudRain,
-  CloudSun,
+  FlaskConical,
   Moon,
   Sun,
   X,
@@ -119,22 +118,35 @@ const T = {
   },
 };
 
+type WeatherType = "clear" | "sunny" | "cloudy" | "overcast" | "storm";
+
+const WEATHER_META: Record<
+  WeatherType,
+  { emoji: string; labelKo: string; labelEn: string; descKo: string; descEn: string }
+> = {
+  clear: { emoji: "☀️", labelKo: "쾌청 (매우 강함)", labelEn: "Clear (Very strong)", descKo: "완벽한 정배열 + 이격도 확대 + 모든 선 상향", descEn: "Perfect alignment + gap expansion + all lines up" },
+  sunny: { emoji: "🌤️", labelKo: "맑음 (안정적)", labelEn: "Sunny (Stable)", descKo: "정배열 유지 중이며 단기 선이 지지를 받음", descEn: "Alignment maintained, short-term line supported" },
+  cloudy: { emoji: "☁️", labelKo: "구름 (수렴 중)", labelEn: "Cloudy (Converging)", descKo: "배열은 유지하나 선들이 모이며 횡보 중", descEn: "Lines converging, sideways movement" },
+  overcast: { emoji: "🌦️", labelKo: "흐림 (추세 약화)", labelEn: "Overcast (Trend weakening)", descKo: "단기 선이 중기 선을 하향 돌파하기 직전", descEn: "Short-term line about to break below mid-term" },
+  storm: { emoji: "⛈️", labelKo: "폭풍 (역배열)", labelEn: "Storm (Inverted)", descKo: "완전한 역배열 상태 (하락 추세 강함)", descEn: "Full inversion (strong downtrend)" },
+};
+
 const COIN_WEATHER = [
-  { coin: "비트코인", coinEn: "Bitcoin", weather: "sunny" as const },
-  { coin: "이더리움", coinEn: "Ethereum", weather: "cloudy" as const },
-  { coin: "리플", coinEn: "Ripple", weather: "rain" as const },
-  { coin: "솔라나", coinEn: "Solana", weather: "sunny" as const },
-  { coin: "도지", coinEn: "Dogecoin", weather: "cloudy" as const },
+  { coin: "비트코인", coinEn: "Bitcoin", weather: "clear" as WeatherType },
+  { coin: "이더리움", coinEn: "Ethereum", weather: "sunny" as WeatherType },
+  { coin: "리플", coinEn: "Ripple", weather: "cloudy" as WeatherType },
+  { coin: "솔라나", coinEn: "Solana", weather: "overcast" as WeatherType },
+  { coin: "도지", coinEn: "Dogecoin", weather: "storm" as WeatherType },
 ];
 
 const SURGE_DATA = [
-  { day: -7, label: "7일 전", coin: "비트코인", coinEn: "Bitcoin", pct: 5 },
-  { day: -6, label: "6일 전", coin: "이더리움", coinEn: "Ethereum", pct: 8 },
-  { day: -5, label: "5일 전", coin: "리플", coinEn: "Ripple", pct: -2 },
-  { day: -4, label: "4일 전", coin: "솔라나", coinEn: "Solana", pct: 12 },
-  { day: -3, label: "3일 전", coin: "도지", coinEn: "Dogecoin", pct: 6 },
-  { day: -2, label: "2일 전", coin: "비트코인", coinEn: "Bitcoin", pct: 3 },
-  { day: -1, label: "1일 전", coin: "이더리움", coinEn: "Ethereum", pct: 4 },
+  { day: -7, label: "7일 전", coin: "비트코인", coinEn: "Bitcoin", pct: 2 },
+  { day: -6, label: "6일 전", coin: "이더리움", coinEn: "Ethereum", pct: 9 },
+  { day: -5, label: "5일 전", coin: "리플", coinEn: "Ripple", pct: 11 },
+  { day: -4, label: "4일 전", coin: "솔라나", coinEn: "Solana", pct: 15 },
+  { day: -3, label: "3일 전", coin: "도지", coinEn: "Dogecoin", pct: 5 },
+  { day: -2, label: "2일 전", coin: "비트코인", coinEn: "Bitcoin", pct: 4 },
+  { day: -1, label: "1일 전", coin: "이더리움", coinEn: "Ethereum", pct: 8 },
 ];
 
 function clamp01(v: number) {
@@ -187,11 +199,6 @@ function ScoreRow({ label, value, colors }: { label: string; value: number; colo
   );
 }
 
-function WeatherIcon({ weather }: { weather: "sunny" | "cloudy" | "rain" }) {
-  const color = weather === "sunny" ? "rgb(245, 158, 11)" : weather === "cloudy" ? "rgb(156, 163, 175)" : "rgb(59, 130, 246)";
-  const Icon = weather === "sunny" ? Sun : weather === "cloudy" ? CloudSun : CloudRain;
-  return <span style={{ color }}><Icon className="h-5 w-5" /></span>;
-}
 
 export default function LabsMarketRoadmapPage() {
   const [mode, setMode] = useState<Mode>("normal");
@@ -245,7 +252,8 @@ export default function LabsMarketRoadmapPage() {
         <header className="flex flex-col gap-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="space-y-2">
-              <h1 className="text-balance text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: colors.text }}>
+              <h1 className="flex items-center gap-2 text-balance text-2xl font-extrabold tracking-tight sm:text-3xl" style={{ color: colors.text }}>
+                <FlaskConical className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" style={{ color: colors.primary1 }} />
                 {t.title}
               </h1>
               <p className="max-w-2xl text-sm leading-6" style={{ color: colors.textMuted }}>
@@ -265,20 +273,25 @@ export default function LabsMarketRoadmapPage() {
                   animate={{ x: mode === "fast" ? "0%" : mode === "normal" ? "100%" : "200%" }}
                   transition={{ type: "spring", stiffness: 320, damping: 30 }}
                 />
-                {(["fast", "normal", "stable"] as const).map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    onClick={() => setMode(m)}
-                    className="relative z-10 inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-medium transition-colors hover:opacity-90"
-                    style={{ color: mode === m ? colors.primary1 : colors.textMuted }}
-                  >
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg" style={{ background: colors.subtleBg, color: m === "fast" ? colors.primary2 : colors.primary1 }}>
-                      {m === "fast" ? <Flame className="h-4 w-4" /> : <Route className="h-4 w-4" />}
-                    </span>
-                    {MODE_LABEL[m][lang]}
-                  </button>
-                ))}
+                {(["fast", "normal", "stable"] as const).map((m) => {
+                  const isSelected = mode === m;
+                  const iconColor = theme === "dark" && isSelected ? "rgb(255,255,255)" : isSelected ? colors.primary1 : colors.textMuted;
+                  const textColor = theme === "dark" && isSelected ? "rgb(255,255,255)" : isSelected ? colors.primary1 : colors.textMuted;
+                  return (
+                    <button
+                      key={m}
+                      type="button"
+                      onClick={() => setMode(m)}
+                      className="relative z-10 inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-medium transition-colors hover:opacity-90"
+                      style={{ color: textColor }}
+                    >
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg" style={{ background: colors.subtleBg, color: iconColor }}>
+                        {m === "fast" ? <Flame className="h-4 w-4" /> : m === "normal" ? <Route className="h-4 w-4" /> : <Construction className="h-4 w-4" />}
+                      </span>
+                      {MODE_LABEL[m][lang]}
+                    </button>
+                  );
+                })}
               </div>
               <button
                 type="button"
@@ -383,22 +396,28 @@ export default function LabsMarketRoadmapPage() {
               >
                 <table className="w-full">
                   <tbody>
-                    {COIN_WEATHER.map((row, i) => (
-                      <tr
-                        key={row.coin}
-                        className="border-b last:border-b-0"
-                        style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
-                      >
-                        <td className="px-5 py-4">
-                          <span className="font-medium" style={{ color: colors.text }}>
-                            {lang === "ko" ? row.coin : row.coinEn}
-                          </span>
-                        </td>
-                        <td className="px-5 py-4 text-right">
-                          <WeatherIcon weather={row.weather} />
-                        </td>
-                      </tr>
-                    ))}
+                    {COIN_WEATHER.map((row) => {
+                      const meta = WEATHER_META[row.weather];
+                      return (
+                        <tr
+                          key={row.coin}
+                          className="border-b last:border-b-0"
+                          style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
+                        >
+                          <td className="px-5 py-3">
+                            <span className="font-medium" style={{ color: colors.text }}>
+                              {lang === "ko" ? row.coin : row.coinEn}
+                            </span>
+                          </td>
+                          <td className="px-5 py-3">
+                            <span className="text-lg" title={lang === "ko" ? meta.descKo : meta.descEn}>{meta.emoji}</span>
+                            <span className="ml-2 text-sm" style={{ color: colors.textMuted }}>
+                              {lang === "ko" ? meta.labelKo : meta.labelEn}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -415,7 +434,7 @@ export default function LabsMarketRoadmapPage() {
               >
                 <div className="flex h-[200px] items-end gap-2">
                   {SURGE_DATA.map((d, i) => {
-                    const h = ((d.pct - surgeMin) / surgeRange) * 100;
+                    const hPct = surgeRange > 0 ? 15 + ((d.pct - surgeMin) / surgeRange) * 80 : 50;
                     return (
                       <div key={d.day} className="flex flex-1 flex-col items-center gap-1">
                         <span className="text-[10px] font-medium" style={{ color: d.pct >= 0 ? "rgb(34, 197, 94)" : "rgb(239, 68, 68)" }}>
@@ -424,12 +443,12 @@ export default function LabsMarketRoadmapPage() {
                         <motion.div
                           className="w-full rounded-t"
                           style={{
-                            height: `${Math.max(h, 8)}%`,
-                            minHeight: 8,
+                            height: `${hPct}%`,
+                            minHeight: 16,
                             background: `linear-gradient(180deg, ${colors.primary1}, ${colors.primary2})`,
                           }}
                           initial={{ height: 0 }}
-                          animate={{ height: `${Math.max(h, 8)}%` }}
+                          animate={{ height: `${hPct}%` }}
                           transition={{ delay: i * 0.05, type: "spring", stiffness: 200, damping: 20 }}
                         />
                         <span className="mt-1 truncate text-[10px]" style={{ color: colors.textMuted }}>
