@@ -432,25 +432,27 @@ export default function LabsMarketRoadmapPage() {
                 className="overflow-hidden rounded-2xl p-5"
                 style={{ background: colors.panel, boxShadow: theme === "light" ? "0 4px 20px rgba(0,0,0,0.06)" : "0 4px 20px rgba(0,0,0,0.2)" }}
               >
-                <div className="flex h-[200px] items-end gap-2">
+                <div className="flex h-[220px] items-end gap-2">
                   {SURGE_DATA.map((d, i) => {
-                    const hPct = surgeYMax > surgeYMin ? Math.max(((Math.max(d.pct, 0) - surgeYMin) / (surgeYMax - surgeYMin)) * 100, 2) : 2;
+                    const barHeightPx = surgeYMax > 0 ? (Math.max(d.pct, 0) / surgeYMax) * 160 : 0;
                     return (
                       <div key={d.day} className="flex flex-1 flex-col items-center gap-1">
                         <span className="text-[10px] font-medium" style={{ color: d.pct >= 0 ? "rgb(34, 197, 94)" : "rgb(239, 68, 68)" }}>
                           {d.pct >= 0 ? "+" : ""}{d.pct}%
                         </span>
-                        <motion.div
-                          className="w-full rounded-t"
-                          style={{
-                            height: `${hPct}%`,
-                            minHeight: 16,
-                            background: `linear-gradient(180deg, ${colors.primary1}, ${colors.primary2})`,
-                          }}
-                          initial={{ height: 0 }}
-                          animate={{ height: `${hPct}%` }}
-                          transition={{ delay: i * 0.05, type: "spring", stiffness: 200, damping: 20 }}
-                        />
+                        <div className="flex w-full flex-1 min-h-[80px] flex-col justify-end">
+                          <motion.div
+                            className="w-full rounded-t"
+                            style={{
+                              height: barHeightPx,
+                              minHeight: d.pct > 0 ? 8 : 0,
+                              background: `linear-gradient(180deg, ${colors.primary1}, ${colors.primary2})`,
+                            }}
+                            initial={{ height: 0 }}
+                            animate={{ height: barHeightPx }}
+                            transition={{ delay: i * 0.05, type: "spring", stiffness: 200, damping: 20 }}
+                          />
+                        </div>
                         <span className="mt-1 truncate text-[10px]" style={{ color: colors.textMuted }}>
                           {lang === "ko" ? d.coin : d.coinEn}
                         </span>
