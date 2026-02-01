@@ -36,24 +36,28 @@ type Sector = {
 
 const THEME_COLORS = {
   light: {
-    bg: "rgb(243, 244, 246)",
+    bg: "rgb(248, 250, 252)",
     panel: "rgb(255, 255, 255)",
-    primary1: "rgb(100, 60, 200)",
-    primary2: "rgb(199, 32, 245)",
-    primary1Muted: "rgba(100, 60, 200, 0.15)",
-    primary2Muted: "rgba(199, 32, 245, 0.15)",
-    text: "rgb(17, 24, 39)",
-    textMuted: "rgb(107, 114, 128)",
+    primary1: "rgb(99, 102, 241)",
+    primary2: "rgb(139, 92, 246)",
+    primary1Muted: "rgba(99, 102, 241, 0.1)",
+    primary2Muted: "rgba(139, 92, 246, 0.1)",
+    text: "rgb(15, 23, 42)",
+    textMuted: "rgb(100, 116, 139)",
+    trackBg: "rgba(0, 0, 0, 0.06)",
+    subtleBg: "rgba(0, 0, 0, 0.04)",
   },
   dark: {
-    bg: "rgb(20, 20, 30)",
-    panel: "rgb(40, 40, 50)",
-    primary1: "rgb(219, 178, 255)",
-    primary2: "rgb(199, 32, 245)",
-    primary1Muted: "rgba(219, 178, 255, 0.12)",
-    primary2Muted: "rgba(199, 32, 245, 0.15)",
-    text: "rgb(243, 244, 246)",
-    textMuted: "rgb(156, 163, 175)",
+    bg: "rgb(9, 9, 11)",
+    panel: "rgb(24, 24, 27)",
+    primary1: "rgb(139, 92, 246)",
+    primary2: "rgb(167, 139, 250)",
+    primary1Muted: "rgba(139, 92, 246, 0.12)",
+    primary2Muted: "rgba(167, 139, 250, 0.08)",
+    text: "rgb(250, 250, 250)",
+    textMuted: "rgb(161, 161, 170)",
+    trackBg: "rgba(255, 255, 255, 0.06)",
+    subtleBg: "rgba(255, 255, 255, 0.04)",
   },
 };
 
@@ -167,7 +171,7 @@ function ScoreRow({ label, value, colors }: { label: string; value: number; colo
   return (
     <div className="grid grid-cols-[52px_1fr_42px] items-center gap-3">
       <div className="text-[11px] tracking-wide" style={{ color: colors.textMuted }}>{label}</div>
-      <div className="relative h-2.5 overflow-hidden rounded-full" style={{ background: "rgba(0,0,0,0.1)" }}>
+      <div className="relative h-2.5 overflow-hidden rounded-full" style={{ background: colors.trackBg }}>
         <motion.div
           className="h-full rounded-full"
           style={{ background: `linear-gradient(90deg, ${colors.primary1}, ${colors.primary2})` }}
@@ -267,7 +271,7 @@ export default function LabsMarketRoadmapPage() {
                     className="relative z-10 inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-medium transition-colors hover:opacity-90"
                     style={{ color: mode === m ? colors.primary1 : colors.textMuted }}
                   >
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg" style={{ background: "rgba(0,0,0,0.08)", color: m === "fast" ? colors.primary2 : colors.primary1 }}>
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg" style={{ background: colors.subtleBg, color: m === "fast" ? colors.primary2 : colors.primary1 }}>
                       {m === "fast" ? <Flame className="h-4 w-4" /> : <Route className="h-4 w-4" />}
                     </span>
                     {MODE_LABEL[m][lang]}
