@@ -46,10 +46,11 @@ const THEME_COLORS = {
     textMuted: "rgb(100, 116, 139)",
     trackBg: "rgba(0, 0, 0, 0.06)",
     subtleBg: "rgba(0, 0, 0, 0.04)",
+    controlBg: "rgba(0, 0, 0, 0.05)",
   },
   dark: {
-    bg: "rgb(9, 9, 11)",
-    panel: "rgb(24, 24, 27)",
+    bg: "rgb(23, 23, 28)",
+    panel: "rgb(32, 32, 38)",
     primary1: "rgb(139, 92, 246)",
     primary2: "rgb(167, 139, 250)",
     primary1Muted: "rgba(139, 92, 246, 0.12)",
@@ -57,7 +58,8 @@ const THEME_COLORS = {
     text: "rgb(250, 250, 250)",
     textMuted: "rgb(161, 161, 170)",
     trackBg: "rgba(255, 255, 255, 0.06)",
-    subtleBg: "rgba(255, 255, 255, 0.04)",
+    subtleBg: "rgba(255, 255, 255, 0.06)",
+    controlBg: "rgba(255, 255, 255, 0.08)",
   },
 };
 
@@ -84,7 +86,7 @@ const STATUS_META: Record<
 
 const T = {
   ko: {
-    title: "코인 마켓 실험실",
+    title: "크립토 마켓 실험실",
     subtitle: "오직 수익에만 집중하는 실험 공간으로 공식 수치와는 다른 독자적인 로직을 적용하며 실험 성과에 따라 예고 없이 종료될 수 있습니다.",
     marketRoadmap: "마켓 로드맵",
     coinWeather: "코인 날씨",
@@ -100,7 +102,7 @@ const T = {
     exchange: "거래소",
   },
   en: {
-    title: "Coin Market Lab",
+    title: "Crypto Market Lab",
     subtitle: "An experimental space focused solely on profits. We apply our own logic different from official figures and may discontinue without notice depending on experimental results.",
     marketRoadmap: "Market Roadmap",
     coinWeather: "Coin Weather",
@@ -243,7 +245,7 @@ export default function LabsMarketRoadmapPage() {
         <header className="flex flex-col gap-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="space-y-2">
-              <h1 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl" style={{ color: colors.text }}>
+              <h1 className="text-balance text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: colors.text }}>
                 {t.title}
               </h1>
               <p className="max-w-2xl text-sm leading-6" style={{ color: colors.textMuted }}>
@@ -251,14 +253,14 @@ export default function LabsMarketRoadmapPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-2 sm:ml-0">
               <div
                 className="relative grid grid-cols-3 rounded-2xl p-1"
-                style={{ background: colors.primary1Muted }}
+                style={{ background: colors.controlBg || colors.subtleBg }}
               >
                 <motion.div
                   className="absolute inset-y-1 w-1/3 rounded-xl"
-                  style={{ background: colors.primary2Muted }}
+                  style={{ background: theme === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.08)" }}
                   initial={false}
                   animate={{ x: mode === "fast" ? "0%" : mode === "normal" ? "100%" : "200%" }}
                   transition={{ type: "spring", stiffness: 320, damping: 30 }}
@@ -282,7 +284,7 @@ export default function LabsMarketRoadmapPage() {
                 type="button"
                 onClick={() => setSettingsOpen(true)}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-xl transition-opacity hover:opacity-80"
-                style={{ background: colors.primary1Muted, color: colors.primary1 }}
+                style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary1 }}
                 aria-label={t.settings}
               >
                 <Settings className="h-5 w-5" />
@@ -325,26 +327,26 @@ export default function LabsMarketRoadmapPage() {
                       <div className="relative flex items-start justify-between gap-4">
                         <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: colors.primary1Muted, color: colors.primary1 }}>
+                            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary1 }}>
                               <Icon className="h-5 w-5" />
                             </span>
                             <h2 className="truncate text-base font-semibold tracking-tight" style={{ color: colors.text }}>
                               {sectorName}
                             </h2>
                             {sector.id === "semiconductor" && labsScore != null && (
-                              <span className="inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-medium" style={{ background: colors.primary2Muted, color: colors.primary2 }}>
+                              <span className="inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-medium" style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary2 }}>
                                 {t.realtime}
                               </span>
                             )}
                           </div>
-                          <div className="mt-3 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs" style={{ background: colors.primary1Muted, color: colors.textMuted }}>
+                          <div className="mt-3 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs" style={{ background: colors.controlBg || colors.subtleBg, color: colors.textMuted }}>
                             <span style={{ color: colors.primary1 }}><StatusIcon className="h-3.5 w-3.5" /></span>
                             <span>{t.currentStatus}</span>
                             <span className="font-medium" style={{ color: colors.text }}>{statusLabel}</span>
                           </div>
                         </div>
                         <div className="hidden shrink-0 sm:flex">
-                          <div className="rounded-xl px-3 py-2 text-right" style={{ background: colors.primary1Muted }}>
+                          <div className="rounded-xl px-3 py-2 text-right" style={{ background: colors.controlBg || colors.subtleBg }}>
                             <div className="text-[10px] uppercase tracking-wider" style={{ color: colors.textMuted }}>Momentum</div>
                             <div className="mt-0.5 text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>
                               {Math.round(weightedMomentum(scores))}
@@ -438,10 +440,6 @@ export default function LabsMarketRoadmapPage() {
                     );
                   })}
                 </div>
-                <div className="mt-3 flex justify-between border-t pt-3" style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}>
-                  <span className="text-[11px]" style={{ color: colors.textMuted }}>7일 전</span>
-                  <span className="text-[11px]" style={{ color: colors.textMuted }}>오늘</span>
-                </div>
               </div>
             </section>
           </div>
@@ -503,7 +501,7 @@ export default function LabsMarketRoadmapPage() {
                       type="button"
                       onClick={() => setTheme("light")}
                       className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium transition-opacity hover:opacity-90 ${theme === "light" ? "" : "opacity-60"}`}
-                      style={{ background: theme === "light" ? colors.primary1Muted : "rgba(0,0,0,0.05)", color: theme === "light" ? colors.primary1 : colors.textMuted }}
+                      style={{ background: theme === "light" ? (colors.controlBg || colors.subtleBg) : "rgba(0,0,0,0.05)", color: theme === "light" ? colors.primary1 : colors.textMuted }}
                     >
                       <Sun className="h-4 w-4" /> Light
                     </button>
@@ -511,7 +509,7 @@ export default function LabsMarketRoadmapPage() {
                       type="button"
                       onClick={() => setTheme("dark")}
                       className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-medium transition-opacity hover:opacity-90 ${theme === "dark" ? "" : "opacity-60"}`}
-                      style={{ background: theme === "dark" ? colors.primary1Muted : "rgba(0,0,0,0.05)", color: theme === "dark" ? colors.primary1 : colors.textMuted }}
+                      style={{ background: theme === "dark" ? (colors.controlBg || colors.subtleBg) : "rgba(0,0,0,0.05)", color: theme === "dark" ? colors.primary1 : colors.textMuted }}
                     >
                       <Moon className="h-4 w-4" /> Dark
                     </button>
@@ -523,7 +521,7 @@ export default function LabsMarketRoadmapPage() {
                     value={lang}
                     onChange={(e) => setLang(e.target.value as Lang)}
                     className="w-full rounded-xl py-2.5 pl-4 pr-10 text-sm font-medium outline-none"
-                    style={{ background: colors.primary1Muted, color: colors.text }}
+                    style={{ background: colors.controlBg || colors.subtleBg, color: colors.text }}
                   >
                     <option value="ko">한국어</option>
                     <option value="en">English</option>
@@ -535,7 +533,7 @@ export default function LabsMarketRoadmapPage() {
                     value={exchange}
                     onChange={(e) => setExchange(e.target.value as Exchange)}
                     className="w-full rounded-xl py-2.5 pl-4 pr-10 text-sm font-medium outline-none"
-                    style={{ background: colors.primary1Muted, color: colors.text }}
+                    style={{ background: colors.controlBg || colors.subtleBg, color: colors.text }}
                   >
                     <option value="upbit">{EXCHANGE_LABEL.upbit[lang]}</option>
                     <option value="binance">{EXCHANGE_LABEL.binance[lang]}</option>
