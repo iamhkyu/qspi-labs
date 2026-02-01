@@ -239,9 +239,9 @@ export default function LabsMarketRoadmapPage() {
   const t = T[lang];
   const colors = THEME_COLORS[theme];
 
-  const surgeMax = Math.max(...SURGE_DATA.map((d) => d.pct), 0);
-  const surgeMin = Math.min(...SURGE_DATA.map((d) => d.pct), 0);
-  const surgeRange = surgeMax - surgeMin || 1;
+  const surgeMaxVal = Math.max(...SURGE_DATA.map((d) => d.pct), 0);
+  const surgeYMax = surgeMaxVal + 5;
+  const surgeYMin = 0;
 
   return (
     <div
@@ -434,7 +434,7 @@ export default function LabsMarketRoadmapPage() {
               >
                 <div className="flex h-[200px] items-end gap-2">
                   {SURGE_DATA.map((d, i) => {
-                    const hPct = surgeRange > 0 ? 15 + ((d.pct - surgeMin) / surgeRange) * 80 : 50;
+                    const hPct = surgeYMax > surgeYMin ? Math.max(((Math.max(d.pct, 0) - surgeYMin) / (surgeYMax - surgeYMin)) * 100, 2) : 2;
                     return (
                       <div key={d.day} className="flex flex-1 flex-col items-center gap-1">
                         <span className="text-[10px] font-medium" style={{ color: d.pct >= 0 ? "rgb(34, 197, 94)" : "rgb(239, 68, 68)" }}>
