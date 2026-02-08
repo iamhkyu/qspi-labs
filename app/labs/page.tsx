@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Bitcoin,
+  ChevronRight,
   CircleEllipsis,
   Cpu,
   FlaskConical,
@@ -15,6 +16,7 @@ import {
   Route,
   Sigma,
 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useLabsScore } from "@/lib/useLabsScore";
 
@@ -309,9 +311,12 @@ export default function LabsMarketRoadmapPage() {
         <main className="mt-10 space-y-8">
           {/* 마켓 로드맵 */}
           <section>
-            <h2 className="mb-4 text-lg font-semibold" style={{ color: colors.text }}>
-              {t.marketRoadmap}
-            </h2>
+            <Link href="/labs/market-roadmap" className="mb-4 flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80">
+              <h2 className="text-lg font-semibold" style={{ color: colors.text }}>
+                {t.marketRoadmap}
+              </h2>
+              <ChevronRight className="h-5 w-5 shrink-0" style={{ color: colors.primary1 }} />
+            </Link>
             <motion.div
               layout
               className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -345,31 +350,35 @@ export default function LabsMarketRoadmapPage() {
                             </h2>
                           </div>
                         </div>
-                        <div className="hidden shrink-0 sm:flex">
-                          <div className="rounded-xl px-3 py-2 text-right" style={{ background: colors.controlBg || colors.subtleBg }}>
-                            <div className="text-[10px] uppercase tracking-wider" style={{ color: colors.textMuted }}>{lang === "ko" ? "로드맵 점수" : "Roadmap Score"}</div>
-                            <div className="mt-0.5 text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>
+                        <div className="flex shrink-0 flex-col items-center gap-1">
+                          <div className="rounded-xl px-3 py-2 text-center" style={{ background: colors.controlBg || colors.subtleBg }}>
+                            <div className="text-xs font-medium" style={{ color: colors.textMuted }}>{lang === "ko" ? "로드맵 점수" : "Roadmap Score"}</div>
+                            <div className="mt-0.5 text-base font-bold tabular-nums" style={{ color: colors.primary1 }}>
                               {Math.round(weightedMomentum(scores))}
                             </div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-[10px] font-medium" style={{ color: colors.textMuted }}>{lang === "ko" ? "진자 점수" : "Pendulum"}</div>
+                            <div className="text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>{Math.round(weightedMomentum(scores) * 0.92)}</div>
                           </div>
                         </div>
                       </div>
                       <div className="relative mt-4 space-y-4">
                         <div className="rounded-xl p-3" style={{ background: colors.controlBg || colors.subtleBg }}>
-                          <div className="flex items-center justify-center gap-4 text-center">
+                          <div className="flex items-center justify-evenly gap-2">
                             <div>
-                              <div className="text-[10px]" style={{ color: colors.textMuted }}>{lang === "ko" ? "5일간" : "5d"}</div>
-                              <div className="text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>20%</div>
+                              <div className="text-xs" style={{ color: colors.textMuted }}>{lang === "ko" ? "5일간" : "5d"}</div>
+                              <div className="text-base font-bold tabular-nums" style={{ color: colors.primary1 }}>20%</div>
                             </div>
                             <div className="h-8 w-px" style={{ background: colors.textMuted, opacity: 0.3 }} />
                             <div>
-                              <div className="text-[10px]" style={{ color: colors.textMuted }}>{lang === "ko" ? "20일간" : "20d"}</div>
-                              <div className="text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>24%</div>
+                              <div className="text-xs" style={{ color: colors.textMuted }}>{lang === "ko" ? "20일간" : "20d"}</div>
+                              <div className="text-base font-bold tabular-nums" style={{ color: colors.primary1 }}>24%</div>
                             </div>
                             <div className="h-8 w-px" style={{ background: colors.textMuted, opacity: 0.3 }} />
                             <div>
-                              <div className="text-[10px]" style={{ color: colors.textMuted }}>{lang === "ko" ? "60일간" : "60d"}</div>
-                              <div className="text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>30%</div>
+                              <div className="text-xs" style={{ color: colors.textMuted }}>{lang === "ko" ? "60일간" : "60d"}</div>
+                              <div className="text-base font-bold tabular-nums" style={{ color: colors.primary1 }}>30%</div>
                             </div>
                           </div>
                         </div>
@@ -389,9 +398,12 @@ export default function LabsMarketRoadmapPage() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* 코인 날씨 */}
             <section>
-              <h2 className="mb-4 text-lg font-semibold" style={{ color: colors.text }}>
-                {t.coinWeather}
-              </h2>
+              <Link href="/labs/coin-weather" className="mb-4 flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80">
+                <h2 className="text-lg font-semibold" style={{ color: colors.text }}>
+                  {t.coinWeather}
+                </h2>
+                <ChevronRight className="h-5 w-5 shrink-0" style={{ color: colors.primary1 }} />
+              </Link>
               <div
                 className="overflow-hidden rounded-2xl"
                 style={{ background: colors.panel, boxShadow: theme === "light" ? "0 4px 20px rgba(0,0,0,0.06)" : "0 4px 20px rgba(0,0,0,0.2)" }}
@@ -406,12 +418,12 @@ export default function LabsMarketRoadmapPage() {
                           className="border-b last:border-b-0"
                           style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
                         >
-                          <td className="w-1/2 px-4 py-3 text-center">
+                          <td className="w-1/2 px-4 py-3 text-left">
                             <span className="font-medium" style={{ color: colors.text }}>
                               {lang === "ko" ? row.coin : row.coinEn}
                             </span>
                           </td>
-                          <td className="w-1/2 px-4 py-3 text-center">
+                          <td className="w-1/2 px-4 py-3 text-left">
                             <span className="text-lg" title={lang === "ko" ? meta.descKo : meta.descEn}>{meta.emoji}</span>
                             <span className="ml-1.5 text-sm" style={{ color: colors.textMuted }}>
                               {lang === "ko" ? meta.labelKo : meta.labelEn}
@@ -427,9 +439,12 @@ export default function LabsMarketRoadmapPage() {
 
             {/* 최근 급등 */}
             <section>
-              <h2 className="mb-4 text-lg font-semibold" style={{ color: colors.text }}>
-                {t.recentSurge}
-              </h2>
+              <Link href="/labs/recent-surge" className="mb-4 flex cursor-pointer items-center gap-2 transition-opacity hover:opacity-80">
+                <h2 className="text-lg font-semibold" style={{ color: colors.text }}>
+                  {t.recentSurge}
+                </h2>
+                <ChevronRight className="h-5 w-5 shrink-0" style={{ color: colors.primary1 }} />
+              </Link>
               <div
                 className="overflow-hidden rounded-2xl p-5"
                 style={{ background: colors.panel, boxShadow: theme === "light" ? "0 4px 20px rgba(0,0,0,0.06)" : "0 4px 20px rgba(0,0,0,0.2)" }}
@@ -439,21 +454,24 @@ export default function LabsMarketRoadmapPage() {
                     const barHeightPx = surgeYMax > 0 ? (Math.max(d.pct, 0) / surgeYMax) * 160 : 0;
                     return (
                       <div key={d.day} className="flex flex-1 flex-col items-center">
-                        <div className="flex w-full flex-1 min-h-[80px] flex-col justify-end gap-0">
-                          <span className="leading-none text-sm font-semibold tabular-nums" style={{ color: d.pct >= 0 ? "rgb(34, 197, 94)" : "rgb(239, 68, 68)" }}>
-                            {d.pct}%
-                          </span>
+                        <div className="relative flex w-full flex-1 min-h-[80px] flex-col justify-end">
                           <motion.div
-                            className="w-full rounded-t"
+                            className="flex w-full min-h-[24px] items-center justify-center rounded-t"
                             style={{
                               height: barHeightPx,
-                              minHeight: d.pct > 0 ? 8 : 0,
+                              minHeight: d.pct > 0 ? 24 : 0,
                               background: `linear-gradient(180deg, ${colors.primary1}, ${colors.primary2})`,
                             }}
                             initial={{ height: 0 }}
                             animate={{ height: barHeightPx }}
                             transition={{ delay: i * 0.05, type: "spring", stiffness: 200, damping: 20 }}
-                          />
+                          >
+                            {d.pct > 0 && (
+                              <span className="text-sm font-semibold tabular-nums text-white drop-shadow-sm">
+                                {d.pct}%
+                              </span>
+                            )}
+                          </motion.div>
                         </div>
                         <span className="mt-2 truncate text-[10px]" style={{ color: colors.textMuted }}>
                           {lang === "ko" ? d.coin : d.coinEn}
