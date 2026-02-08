@@ -339,19 +339,19 @@ export default function LabsMarketRoadmapPage() {
                       className="group relative overflow-hidden rounded-2xl p-5"
                       style={{ background: colors.panel, boxShadow: theme === "light" ? "0 4px 20px rgba(0,0,0,0.06)" : "0 4px 20px rgba(0,0,0,0.2)" }}
                     >
-                      <div className="min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary1 }}>
+                      <div className="flex w-full items-center justify-between gap-4">
+                          <div className="flex min-w-0 items-center gap-2">
+                            <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary1 }}>
                               <Icon className="h-5 w-5" />
                             </span>
                             <h2 className="truncate text-base font-semibold tracking-tight" style={{ color: colors.text }}>
                               {sectorName}
                             </h2>
-                            <span className="text-xs" style={{ color: colors.textMuted }}>
-                              {lang === "ko" ? "로드맵 점수" : "Roadmap Score"}{" "}
-                              <span className="font-semibold tabular-nums" style={{ color: colors.primary1 }}>{Math.round(weightedMomentum(scores))}</span>
-                            </span>
                           </div>
+                          <span className="shrink-0 text-xs" style={{ color: colors.textMuted }}>
+                            {lang === "ko" ? "로드맵 점수" : "Roadmap Score"}{" "}
+                            <span className="font-semibold tabular-nums" style={{ color: colors.primary1 }}>{Math.round(weightedMomentum(scores))}</span>
+                          </span>
                         </div>
                       <div className="relative mt-4 space-y-4">
                         <div className="rounded-xl p-3" style={{ background: colors.controlBg || colors.subtleBg }}>
@@ -408,7 +408,7 @@ export default function LabsMarketRoadmapPage() {
                           className="border-b last:border-b-0"
                           style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
                         >
-                          <td className="w-1/2 pl-6 pr-3 py-3 text-left">
+                          <td className="w-1/2 pl-8 pr-3 py-3 text-left">
                             <span className="mr-4 font-medium" style={{ color: colors.text }}>
                               {lang === "ko" ? row.coin : row.coinEn}
                             </span>
