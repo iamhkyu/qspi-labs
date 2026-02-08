@@ -88,7 +88,7 @@ const STATUS_META: Record<
 const T = {
   ko: {
     title: "크립토 마켓 실험실",
-    subtitle: "오직 수익에만 집중하는 실험 공간으로 공식 수치와는 다른 독자적인 로직을 적용하며 실험 성과에 따라 예고 없이 종료될 수 있습니다.",
+    subtitle: "오직 수익에만 집중하는 실험 공간으로 공식 수치가 아닌, 다른 독자적인 로직을 적용하며 실험 성과에 따라 예고 없이 종료될 수 있습니다.",
     marketRoadmap: "마켓 로드맵",
     coinWeather: "코인 날씨",
     recentSurge: "최근 급등",
@@ -104,7 +104,7 @@ const T = {
   },
   en: {
     title: "Crypto Market Lab",
-    subtitle: "An experimental space focused solely on profits. We apply our own logic different from official figures and may discontinue without notice depending on experimental results.",
+    subtitle: "An experimental space focused solely on profits. We apply our own logic, not official figures, and may discontinue without notice depending on experimental results.",
     marketRoadmap: "Market Roadmap",
     coinWeather: "Coin Weather",
     recentSurge: "Recent Surge",
@@ -347,6 +347,10 @@ export default function LabsMarketRoadmapPage() {
                             <h2 className="truncate text-base font-semibold tracking-tight" style={{ color: colors.text }}>
                               {sectorName}
                             </h2>
+                            <span className="text-xs" style={{ color: colors.textMuted }}>
+                              {lang === "ko" ? "로드맵 점수" : "Roadmap Score"}{" "}
+                              <span className="font-semibold tabular-nums" style={{ color: colors.primary1 }}>{Math.round(weightedMomentum(scores))}</span>
+                            </span>
                           </div>
                         </div>
                       <div className="relative mt-4 space-y-4">
@@ -405,7 +409,7 @@ export default function LabsMarketRoadmapPage() {
                           style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
                         >
                           <td className="w-1/2 pl-6 pr-3 py-3 text-left">
-                            <span className="font-medium" style={{ color: colors.text }}>
+                            <span className="mr-4 font-medium" style={{ color: colors.text }}>
                               {lang === "ko" ? row.coin : row.coinEn}
                             </span>
                           </td>
