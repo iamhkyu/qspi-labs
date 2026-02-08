@@ -185,9 +185,9 @@ function applyLabsScoreToSectors(sectors: Sector[], score: number | null): Secto
 function ScoreRow({ label, value, colors }: { label: string; value: number; colors: typeof THEME_COLORS.light }) {
   const pct = Math.round(clamp01(value / 100) * 100);
   return (
-    <div className="grid grid-cols-[52px_1fr_42px] items-center gap-3">
-      <div className="text-[11px] tracking-wide" style={{ color: colors.textMuted }}>{label}</div>
-      <div className="relative h-2.5 overflow-hidden rounded-full" style={{ background: colors.trackBg }}>
+    <div className="grid grid-cols-[minmax(72px,auto)_minmax(0,1fr)_32px] items-center gap-2">
+      <div className="text-[11px] tracking-wide whitespace-nowrap" style={{ color: colors.textMuted }}>{label}</div>
+      <div className="relative h-2 overflow-hidden rounded-full" style={{ background: colors.trackBg }}>
         <motion.div
           className="h-full rounded-full"
           style={{ background: `linear-gradient(90deg, ${colors.primary1}, ${colors.primary2})` }}
@@ -339,8 +339,7 @@ export default function LabsMarketRoadmapPage() {
                       className="group relative overflow-hidden rounded-2xl p-5"
                       style={{ background: colors.panel, boxShadow: theme === "light" ? "0 4px 20px rgba(0,0,0,0.06)" : "0 4px 20px rgba(0,0,0,0.2)" }}
                     >
-                      <div className="relative flex items-start justify-between gap-4">
-                        <div className="min-w-0">
+                      <div className="min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl" style={{ background: colors.controlBg || colors.subtleBg, color: colors.primary1 }}>
                               <Icon className="h-5 w-5" />
@@ -350,19 +349,6 @@ export default function LabsMarketRoadmapPage() {
                             </h2>
                           </div>
                         </div>
-                        <div className="flex shrink-0 flex-col items-center gap-1">
-                          <div className="rounded-xl px-3 py-2 text-center" style={{ background: colors.controlBg || colors.subtleBg }}>
-                            <div className="text-xs font-medium" style={{ color: colors.textMuted }}>{lang === "ko" ? "로드맵 점수" : "Roadmap Score"}</div>
-                            <div className="mt-0.5 text-base font-bold tabular-nums" style={{ color: colors.primary1 }}>
-                              {Math.round(weightedMomentum(scores))}
-                            </div>
-                          </div>
-                          <div className="text-center">
-                            <div className="text-[10px] font-medium" style={{ color: colors.textMuted }}>{lang === "ko" ? "진자 점수" : "Pendulum"}</div>
-                            <div className="text-sm font-semibold tabular-nums" style={{ color: colors.primary1 }}>{Math.round(weightedMomentum(scores) * 0.92)}</div>
-                          </div>
-                        </div>
-                      </div>
                       <div className="relative mt-4 space-y-4">
                         <div className="rounded-xl p-3" style={{ background: colors.controlBg || colors.subtleBg }}>
                           <div className="flex items-center justify-evenly gap-2">
@@ -418,12 +404,12 @@ export default function LabsMarketRoadmapPage() {
                           className="border-b last:border-b-0"
                           style={{ borderColor: theme === "light" ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.06)" }}
                         >
-                          <td className="w-1/2 px-4 py-3 text-left">
+                          <td className="w-1/2 pl-6 pr-3 py-3 text-left">
                             <span className="font-medium" style={{ color: colors.text }}>
                               {lang === "ko" ? row.coin : row.coinEn}
                             </span>
                           </td>
-                          <td className="w-1/2 px-4 py-3 text-left">
+                          <td className="w-1/2 pl-3 pr-6 py-3 text-left">
                             <span className="text-lg" title={lang === "ko" ? meta.descKo : meta.descEn}>{meta.emoji}</span>
                             <span className="ml-1.5 text-sm" style={{ color: colors.textMuted }}>
                               {lang === "ko" ? meta.labelKo : meta.labelEn}
